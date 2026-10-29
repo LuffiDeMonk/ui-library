@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  /* Radius tokens (DESIGN.md Section 11) */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Harmonized Gray & Accent Scales (DESIGN.md Core Palette) */
+  --color-gray-50: #FBF9F4;
+  --color-gray-100: #F5F3EE;
+  --color-gray-150: #F0EEE9;
+  --color-gray-200: #E5E0D8;
+  --color-gray-250: #DAD3C8;
+  --color-gray-300: #CEC5BD;
+  --color-gray-350: #B8AFA7;
+  --color-gray-400: #A8A29A;
+  --color-gray-500: #7D766F;
+  --color-gray-550: #6F6962;
+  --color-gray-600: #615E59;
+  --color-gray-700: #4B4640;
+  --color-gray-800: #2C2B27;
+  --color-gray-850: #22211E;
+  --color-gray-900: #1B1C19;
+  --color-gray-950: #0F0D0C;
+
+  --color-red-100: #FFE8E5;
+  --color-red-600: #BA1A1A;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+:root {
+  /* Core Palette (DESIGN.md Section 6) */
+  --background: #FBF9F4;
+  --foreground: #1B1C19;
+  --card: #F5F3EE;
+  --card-foreground: #1B1C19;
+  --popover: #FBF9F4;
+  --popover-foreground: #1B1C19;
+  --primary: #0F0D0C;
+  --primary-foreground: #FBF9F4;
+  --secondary: #615E59;
+  --secondary-foreground: #FBF9F4;
+  --muted: #F0EEE9;
+  --muted-foreground: #4B4640;
+  --accent: #F5F3EE;
+  --accent-foreground: #1B1C19;
+  --border: #CEC5BD;
+  --input: #CEC5BD;
+  --ring: #7D766F;
+
+  /* Status Colors (DESIGN.md Section 7) */
+  --success: #2F6B45;
+  --success-foreground: #F4FAF5;
+  --success-muted: #E3F1E7;
+
+  --warning: #8A5A00;
+  --warning-foreground: #FFF8E7;
+  --warning-muted: #FFF0C2;
+
+  --destructive: #BA1A1A;
+  --destructive-foreground: #FFDAD6;
+  --destructive-muted: #FFE8E5;
+
+  --info: #315F78;
+  --info-foreground: #F2F8FB;
+  --info-muted: #E2F0F5;
+
+  /* Border Radius (DESIGN.md Section 11: 8px default inputs/cards/buttons) */
+  --radius: 0.5rem;
+
+  /* Sidebar Tokens (DESIGN.md Section 18) */
+  --sidebar: #F5F3EE;
+  --sidebar-foreground: #1B1C19;
+  --sidebar-primary: #0F0D0C;
+  --sidebar-primary-foreground: #FBF9F4;
+  --sidebar-accent: #F0EEE9;
+  --sidebar-accent-foreground: #1B1C19;
+  --sidebar-border: #CEC5BD;
+  --sidebar-ring: #7D766F;
+
+  /* Chart Tokens */
+  --chart-1: #0F0D0C;
+  --chart-2: #615E59;
+  --chart-3: #7D766F;
+  --chart-4: #CEC5BD;
+  --chart-5: #315F78;
+}
+
+.dark {
+  --background: #151412;
+  --foreground: #F5F3EE;
+  --card: #1E1D1A;
+  --card-foreground: #F5F3EE;
+  --popover: #1E1D1A;
+  --popover-foreground: #F5F3EE;
+  --primary: #F5F3EE;
+  --primary-foreground: #0F0D0C;
+  --secondary: #3B3935;
+  --secondary-foreground: #F5F3EE;
+  --muted: #282622;
+  --muted-foreground: #A8A29A;
+  --accent: #282622;
+  --accent-foreground: #F5F3EE;
+  --border: #3D3934;
+  --input: #3D3934;
+  --ring: #7D766F;
+
+  /* Status Colors */
+  --destructive: #E53935;
+  --destructive-foreground: #410002;
+  --destructive-muted: #3B1214;
+
+  --success: #4E9A68;
+  --success-foreground: #F4FAF5;
+  --success-muted: #1A3824;
+
+  --warning: #F5B041;
+  --warning-foreground: #FFF8E7;
+  --warning-muted: #422C0A;
+
+  --info: #5FA5C4;
+  --info-foreground: #F2F8FB;
+  --info-muted: #163647;
+
+  --radius: 0.5rem;
+
+  /* Sidebar Tokens */
+  --sidebar: #191816;
+  --sidebar-foreground: #F5F3EE;
+  --sidebar-primary: #F5F3EE;
+  --sidebar-primary-foreground: #0F0D0C;
+  --sidebar-accent: #282622;
+  --sidebar-accent-foreground: #F5F3EE;
+  --sidebar-border: #3D3934;
+  --sidebar-ring: #7D766F;
+
+  /* Chart Tokens */
+  --chart-1: #F5F3EE;
+  --chart-2: #A8A29A;
+  --chart-3: #7D766F;
+  --chart-4: #4B4640;
+  --chart-5: #5FA5C4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  :root,
+  body,
+  [data-slot="dialog-content"] {
+    font-family: var(--font-sans);
+  }
+
+  /* Browser autofill style neutralization to match design surface */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #FBF9F4 inset !important;
+    -webkit-text-fill-color: #1B1C19 !important;
+    caret-color: #1B1C19;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input:autofill,
+  input:autofill:hover,
+  input:autofill:focus,
+  input:autofill:active {
+    box-shadow: 0 0 0 1000px #FBF9F4 inset !important;
+    filter: none;
+  }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #1E1D1A inset !important;
+    -webkit-text-fill-color: #F5F3EE !important;
+    caret-color: #F5F3EE;
+  }
+
+  .dark input:autofill,
+  .dark input:autofill:hover,
+  .dark input:autofill:focus,
+  .dark input:autofill:active {
+    box-shadow: 0 0 0 1000px #1E1D1A inset !important;
+  }
+
+  [data-slot="input-group"]:has(input:-webkit-autofill),
+  [data-slot="input-group"]:has(input:autofill) {
+    background-color: #FBF9F4 !important;
+  }
+
+  .dark [data-slot="input-group"]:has(input:-webkit-autofill),
+  .dark [data-slot="input-group"]:has(input:autofill) {
+    background-color: #1E1D1A !important;
+  }
+
+  /* Responsive, accessible placeholder styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-500, #7D766F);
+    opacity: 1;
+    font-size: 0.8125rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    input::placeholder,
+    textarea::placeholder {
+      font-size: 0.875rem;
+    }
+  }
+
+  textarea::placeholder {
+    white-space: normal;
+  }
+}
